@@ -1,16 +1,13 @@
 require 'sinatra/base'
+require 'pg'
 require_relative 'bookmarks'
 
 class App < Sinatra::Base
 
   get '/' do
-    @bookmarks = [
-      "www.google.com",
-      "www.facebook.com",
-      "www.yahoo.com"
-    ]
-
-  erb :index
+    @urls = PG.connect :dbname => 'bookmarks', :user => 'danielwork'
+    @url = @urls.exec "SELECT * FROM bookmarks"
+    erb :index
   end
 
 

@@ -1,6 +1,6 @@
 <html>
   <h2>
-  <%= @bookmarks.join%>
+  <%= @urls.each do | row | puts "%s %s" % [row['id'], row['url']] end %>
   </h2>
-
+  
 </html>
