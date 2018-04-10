@@ -1,13 +1,17 @@
 require 'sinatra/base'
 require 'pg'
+require 'pry'
+
 require_relative 'bookmarks'
+require_relative 'helper_methods'
 
 class App < Sinatra::Base
 
   get '/' do
-    @urls = PG.connect :dbname => 'bookmarks', :user => 'danielwork'
-    @url = @urls.exec "SELECT * FROM bookmarks"
+    test_database
+    setup
     erb :index
+    #binding.pry
   end
 
 
