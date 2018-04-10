@@ -3,15 +3,12 @@ require 'pg'
 require 'pry'
 
 require_relative 'bookmarks'
-require_relative 'helper_methods'
 
 class App < Sinatra::Base
 
   get '/' do
-    test_database
-    setup
+    @bookmarks = Bookmarks.new
     erb :index
-    #binding.pry
   end
 
 

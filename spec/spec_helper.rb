@@ -7,8 +7,12 @@ RSpec.configure do | config |
   require 'simplecov'
   require 'simplecov-console'
   require 'app'
+  require 'pg'
   Capybara.app = App
 
+  config.before(:each) do
+    clear_table
+  end
 end
 
 SimpleCov.start
@@ -21,3 +25,7 @@ SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter.new([
 
 
 
+def clear_table
+  database = PG.connect :dbname => 'bookmark_manager_test', :user => 'danielwork'
+  database.exec("TRUNCATE bookmarks;")
+end

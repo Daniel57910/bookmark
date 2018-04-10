@@ -1,4 +1,5 @@
 require 'bookmarks'
+require 'helper_methods'
 
 describe 'Bookmarks' do
 
@@ -6,8 +7,10 @@ describe 'Bookmarks' do
 
   describe "#print" do
     it "returns a list of bookmarks" do
+      database_setup
+      #add_test_urls
       list = ["www.facebook.com", "www.google.com", "www.yahoo.com"]
-      expect(bookmarks.print).to eq list.join("\n")
+      expect(bookmarks.print_table).to eq list
     end
   end
 

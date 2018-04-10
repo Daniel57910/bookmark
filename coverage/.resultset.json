@@ -3,6 +3,7 @@
     "coverage": {
       "/Users/danielwork/Documents/GitHub/makers/week4/bmark/spec/features/feature_spec.rb": [
         1,
+        1,
         null,
         1,
         1,
@@ -10,10 +11,23 @@
         1,
         1,
         1,
+        1,
+        null,
         null,
         null
       ],
+      "/Users/danielwork/Documents/GitHub/makers/week4/bmark/spec/helper_methods.rb": [
+        1,
+        0,
+        null,
+        null,
+        1,
+        2,
+        2,
+        null
+      ],
       "/Users/danielwork/Documents/GitHub/makers/week4/bmark/spec/units/bookmark_spec.rb": [
+        1,
         1,
         null,
         1,
@@ -23,6 +37,8 @@
         1,
         1,
         1,
+        null,
+        1,
         1,
         null,
         null,
@@ -30,6 +46,6 @@
         null
       ]
     },
-    "timestamp": 1523359753
+    "timestamp": 1523370946
   }
 }

@@ -1,6 +1,3 @@
 <html>
- <%@url.each do | row | %>
-  <p><%= row['url']%> <%= row['id']%></p>
-<% end %>
-
+ <%= @bookmarks.print_table%>
 </html>

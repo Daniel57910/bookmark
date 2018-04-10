@@ -1,10 +1,13 @@
 require 'app'
+require 'helper_methods'
 
 feature 'Loading a page of bookmarks' do
   scenario 'Loading homepage presents user with a list of bookmarks' do
+    database_setup
     visit '/'
-    expect(page).to have_content "www.google.com 1"
-    expect(page).to have_content "www.destroyallsoftware.com 2"
-    expect(page).to have_content "www.askjeeves.com 3"
+    expect(page).to have_content "www.facebook.com"
+    expect(page).to have_content "www.google.com"
+    expect(page).to have_content "www.yahoo.com"
+    
   end
 end
