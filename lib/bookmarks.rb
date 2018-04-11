@@ -12,7 +12,7 @@ class Bookmarks
   end
 
   def add(bmark)
-    @bmark = bmark
+    @url = bmark
     add_to_database
   end
 
@@ -31,8 +31,19 @@ class Bookmarks
   end
 
   def add_to_database
-    @database.exec_params("INSERT INTO bookmarks (url) VALUES ($1)", [@bmark.url])
-    #res = conn.exec_params('SELECT $1 AS a, $2 AS b, $3 AS c', [1, 2, nil])
+    #binding.pry
+    @database.exec_params("INSERT INTO bookmarks (url) VALUES ($1)", [@url])
+    #sql 
+  end
+
+end
+
+class Bmark
+
+  attr_reader :url
+  
+  def initialize(url)
+    @url = url
   end
 
 end

@@ -1,11 +1,14 @@
 require 'sinatra/base'
+require 'sinatra/flash'
 require 'pg'
 require 'pry'
 require_relative 'bmark'
-
 require_relative 'bookmarks'
 
 class App < Sinatra::Base
+
+  enable :sessions
+  register Sinatra::Flash
 
   get '/' do
     @bookmarks = Bookmarks.new
@@ -18,10 +21,20 @@ class App < Sinatra::Base
   end
 
   post '/success' do
-    p params
-    bmark = Bmark.new(params[:url])
-    Bookmarks.new.add(bmark)
-    redirect '/'
+    @url = params[:url]
+    @url = URI(@url)
+    flash[:test] = "welcome"
+    #binding.pry
+
+    if @url.scheme == nil or @url.host == nil
+      flash[:incorrect_bookmark] = "URL is not correct. Please enter a correct URL."
+      redirect '/add'
+    else
+      bmarks = Bookmarks.new
+      bmarks.add(@url)
+      redirect '/'
+    end
+
   end
 
 

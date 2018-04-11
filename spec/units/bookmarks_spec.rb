@@ -7,9 +7,8 @@ describe 'Bookmarks' do
 
   describe "#print" do
     it "returns a list of bookmarks" do
-      database_setup
-      #add_test_urls
-      list = ["www.facebook.com", "www.google.com", "www.yahoo.com"]
+      add_test_urls
+      list = ["http://facebook.com", "http://google.com", "http://yahoo.com"]
       expect(bookmarks.print_table).to eq list
     end
   end
