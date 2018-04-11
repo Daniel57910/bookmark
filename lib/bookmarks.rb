@@ -5,14 +5,25 @@ class Bookmarks
   def initialize
     ENV['RACK_ENV'] == 'test' ? setup_test : setup_regular
     create_table
+    @urls = []
+    @names = []
   end
 
-  def print_table
-    @table.map { |row| row['url']}
+  def names
+    @name = @table.map { |row| Bmark.new(row['url'], row['urlname']) }
+    binding.pry
+    @names
+  end
+
+  def urls
+    @url = @table.map { |row| @urls << row['url'] }
+    @urls 
   end
 
   def add(bmark)
-    @url = bmark
+    @bmark = bmark
+    @url = @bmark.url
+    @url = @url.to_s
     add_to_database
   end
 
@@ -32,7 +43,7 @@ class Bookmarks
 
   def add_to_database
     #binding.pry
-    @database.exec_params("INSERT INTO bookmarks (url) VALUES ($1)", [@url])
+    @database.exec_params('INSERT INTO bookmarks (url, urlname) VALUES ($1, $2)', [@url, @bmark.name])
     #sql 
   end
 
@@ -40,10 +51,11 @@ end
 
 class Bmark
 
-  attr_reader :url
+  attr_reader :url, :name
   
-  def initialize(url)
+  def initialize(url, name = nil)
     @url = url
+    @name = name
   end
 
 end

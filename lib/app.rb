@@ -2,7 +2,6 @@ require 'sinatra/base'
 require 'sinatra/flash'
 require 'pg'
 require 'pry'
-require_relative 'bmark'
 require_relative 'bookmarks'
 
 class App < Sinatra::Base
@@ -21,9 +20,10 @@ class App < Sinatra::Base
   end
 
   post '/success' do
+    p params
     @url = params[:url]
+    @name = params[:urlname]
     @url = URI(@url)
-    flash[:test] = "welcome"
     #binding.pry
 
     if @url.scheme == nil or @url.host == nil
@@ -31,8 +31,10 @@ class App < Sinatra::Base
       redirect '/add'
     else
       bmarks = Bookmarks.new
-      bmarks.add(@url)
-      redirect '/'
+      bmark = Bmark.new(@url, @name)
+      bmarks.add(bmark)
+      bmarks.names
+      #binding.pry
     end
 
   end
