@@ -9,15 +9,9 @@ class Bookmarks
     @names = []
   end
 
-  def names
+  def show_bookmarks
     @name = @table.map { |row| Bmark.new(row['url'], row['urlname']) }
-    binding.pry
-    @names
-  end
-
-  def urls
-    @url = @table.map { |row| @urls << row['url'] }
-    @urls 
+    #maps over sql table, adds to Bmark instance and shovels into array
   end
 
   def add(bmark)
@@ -42,9 +36,7 @@ class Bookmarks
   end
 
   def add_to_database
-    #binding.pry
     @database.exec_params('INSERT INTO bookmarks (url, urlname) VALUES ($1, $2)', [@url, @bmark.name])
-    #sql 
   end
 
 end
