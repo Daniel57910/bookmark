@@ -1,6 +1,4 @@
-	1.	Update postgres to have 2 rows
-	2.	Update ruby class to except link and info
-	3.	Send url and info to the database
-	4.	Return the info and the link to the controller
-
-	1.	Corner case, if two urls are equal then raise an error.
+1. update rspec database
+2. update rspec tests
+3. commit to github
+4. finish CRUD

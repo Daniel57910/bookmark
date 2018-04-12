@@ -6,19 +6,19 @@ feature 'Loading a page of bookmarks' do
   scenario 'Loading homepage presents user with a list of bookmarks' do
     add_test_urls
     visit ('/')
-    expected_urls  
+    url_content
   end
 end
 
 feature 'creating a new bookmark' do
   scenario 'adding a url to create a new bookmark' do
-    add_test_urls
     visit '/'
     click_button('Add Bookmark')
     fill_in('url', with: "http://nike.com")
+    fill_in('urlname', with: "nike homepage")
     click_button('Submit')
-    expected_urls
-    expect(page).to have_content "http://nike.com"
+    url_content
+    expect(page).to have_content "nike homepage"
   end
 end
 

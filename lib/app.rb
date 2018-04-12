@@ -19,7 +19,7 @@ class App < Sinatra::Base
     #redirect '/success'
   end
 
-  post '/success' do
+  post '/add_url' do
     p params
     @url = URI(params[:url])
     @name = params[:urlname]
@@ -33,7 +33,6 @@ class App < Sinatra::Base
     end
 
   end
-
 
   run if $app_file == 0
 

@@ -4,16 +4,18 @@
   end
 
   def add_test_urls
-    database_setup.exec("INSERT INTO bookmarks VALUES (1, 'http://facebook.com'), (2, 'http://google.com'), (3, 'http://yahoo.com');")
+    database_setup.exec("INSERT INTO bookmarks (url, urlname) VALUES ($1, $2)", ['http://facebook.com', 'facebook homepage'])
   end
 
   def add__url
     database_setup.exec("INSERT INTO bookmarks (url) VALUES ($1)", ['"http://yahoo.com'])
   end
 
-  def expected_urls
-    expect(page).to have_content "http://facebook.com"
-    expect(page).to have_content "http://google.com"
-    expect(page).to have_content "http://yahoo.com"
+  def url_content
+    expect(page).to have_content "Enter Bookmark URL\n"
+  end
+
+  def expected_content
+    expect(page).to have_content "facebook hompeage"
   end
 
