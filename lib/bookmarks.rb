@@ -9,7 +9,8 @@ module Database
   end
 
   def create_table
-    @@database.exec "SELECT * FROM bookmarks"
+    @@table = @@database.exec "SELECT * FROM bookmarks"
+    @@table
   end
 
   def add_to_database(url, name)

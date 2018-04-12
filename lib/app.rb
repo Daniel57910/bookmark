@@ -21,18 +21,15 @@ class App < Sinatra::Base
 
   post '/success' do
     p params
-    @url = params[:url]
+    @url = URI(params[:url])
     @name = params[:urlname]
-    @url = URI(@url)
-    #binding.pry
 
     if @url.scheme == nil or @url.host == nil
       flash[:incorrect_bookmark] = "URL is not correct. Please enter a correct URL."
       redirect '/add'
     else
-      bmark = Bmark.new(@url, @name)
-      Bookmarks.add(bmark)
-      #binding.pry
+      Bookmarks.add(Bmark.new(@url, @name))
+      redirect '/'
     end
 
   end
