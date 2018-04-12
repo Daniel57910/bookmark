@@ -17,6 +17,7 @@ class Bookmarks
   def add(bmark)
     @bmark = bmark
     @url = @bmark.url
+    binding.pry
     @url = @url.to_s
     add_to_database
   end

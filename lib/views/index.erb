@@ -1,11 +1,9 @@
 <html>%> 
  <br>
  <% @bookmarks.show_bookmarks.each { | page | %>
-  <h2><%= page.url%> = <%=page.name%></h2>
+  <h2> <a href = "<%=page.url%>" >  <%=page.name%> </a> </h2>
 <% } %>
 
-
- 
  <form action = "/add" method = "get">
   <button id = "Add Bookmark">Enter Bookmark URL</button>
   </form>
