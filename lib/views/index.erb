@@ -1,6 +1,5 @@
 <html>%> 
- <br>
- <% @bookmarks.show_bookmarks.each { | page | %>
+ <% Bookmarks.show_bookmarks.each { | page | %>
   <h2> <a href = "<%=page.url%>" >  <%=page.name%> </a> </h2>
 <% } %>
 

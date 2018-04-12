@@ -10,7 +10,7 @@ class App < Sinatra::Base
   register Sinatra::Flash
 
   get '/' do
-    @bookmarks = Bookmarks.new
+    Bookmarks.connect
     erb :index
   end
 
@@ -30,10 +30,8 @@ class App < Sinatra::Base
       flash[:incorrect_bookmark] = "URL is not correct. Please enter a correct URL."
       redirect '/add'
     else
-      bmarks = Bookmarks.new
       bmark = Bmark.new(@url, @name)
-      bmarks.add(bmark)
-      bmarks.names
+      Bookmarks.add(bmark)
       #binding.pry
     end
 
