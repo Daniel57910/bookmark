@@ -44,3 +44,13 @@ feature 'deleting a bookmark from the bookmark bar' do
   end
 end
 
+feature 'updating a bookmark from the bookmarks bar' do
+  scenario "user updates either the page name or url" do
+    add_test_urls
+    visit('/')
+    save_and_open_page
+    click_button("Update")
+    expect(page).to have_content "your bookmark was successfully updated"
+  end
+end
+

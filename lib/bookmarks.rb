@@ -18,9 +18,13 @@ module Database
   end
 
   def delete_bookmark(key)
-    p ENV['RACK_ENV']
     @database.exec("DELETE FROM bookmarks WHERE url LIKE '#{key}';")
   end
+
+  def update_bookmark(newurl, newname, key)
+    @database.exec("UPDATE bookmarks SET url = '#{newurl}', urlname = '#{newname}' WHERE url like '#{key}';")
+  end
+
 
 end
 
@@ -45,6 +49,10 @@ class Bookmarks
 
   def self.delete(key)
     delete_bookmark(key)
+  end
+
+  def self.update(newurl, newname, key)
+    update_bookmark(newurl, newname, key)
   end
 
 end

@@ -1,4 +1,5 @@
 <html>
+
   <form action = "/add" method = "get">
     <button id = "Add Bookmark"><h3>Enter Bookmark URL</h3></button>
   </form>
@@ -6,12 +7,22 @@
     <%= flash[:deleted_page]%>
     
     <% @pages.each { | page | %>
+
       <form method = "post" action = "/delete">
-        <a href = <%=page.url %> > <%=page.name %> </a> 
+        <a href = <%=page.url %> ><%= page.name%></a>
         <input id=<%=page.name %> name="delete_bmark" type = "hidden" value = <%= page.url %> > </input>
-        <%= page.name%>
         <input type = "submit" value="Delete"></input>
       </form>
+
+      <form method = "post" action = "/update">
+        <label for = "newurl">Update The URL</label>
+        <input type = "text" name = "newurl" value = <%= page.url %> ></input>
+        <label for = "newname">Update URL Name</label>
+        <input type = "text" name = "newname" value = <%= page.name%> ></input>
+        <input id = <%=page.name%> name = "key" type = "hidden" value = <%= page.url%> > </input>
+        <input type = "submit" value = "Update"></input>
+      </form>
+
     <% } %>
   
 

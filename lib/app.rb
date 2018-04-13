@@ -12,9 +12,7 @@ class App < Sinatra::Base
   Bookmarks.connect
 
   get '/' do
-    
     @pages = Bookmarks.show_bookmarks
-    #p @pages
     erb :index
   end
 
@@ -40,10 +38,18 @@ class App < Sinatra::Base
     delete =  params[:delete_bmark]
     Bookmarks.delete(delete)
     redirect '/'
-    
   end
 
+  post '/update' do
+    p params
+    newurl = params[:newurl]
+    newname = params[:newname]
+    key = params[:key]
+    Bookmarks.update(newurl, newname, key)
   
+
+    redirect '/'
+  end
 
   run if $app_file == 0
 
