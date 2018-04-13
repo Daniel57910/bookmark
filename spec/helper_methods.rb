@@ -4,11 +4,7 @@
   end
 
   def add_test_urls
-    database_setup.exec("INSERT INTO bookmarks (url, urlname) VALUES ($1, $2)", ['http://facebook.com', 'facebook homepage'])
-  end
-
-  def add__url
-    database_setup.exec("INSERT INTO bookmarks (url) VALUES ($1)", ['"http://yahoo.com'])
+    database_setup.exec_params("INSERT INTO bookmarks (url, urlname) VALUES ($1, $2)", ['http://facebook.com', 'facebook homepage'])
   end
 
   def url_content

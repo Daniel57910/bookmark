@@ -1,4 +1,13 @@
-1. update rspec database
-2. update rspec tests
-3. commit to github
 4. finish CRUD
+
+2. write unit test for deleting bookmark entry
+3. write code for deleting bookmark entry
+
+
+
+before writing method
+what it returns
+what arguments it would receive
+name of the method
+
+from these write tests.
